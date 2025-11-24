@@ -227,6 +227,22 @@
     display: none;
 }
 
+/* DASHBOARD CONTENT CSS  */
+
+.db-content{
+    padding: 10px;
+}
+
+/* END */
+
+#greetings{
+    font-size: 2em;
+}
+
+.bills{
+    box-shadow: #000;
+}
+
 @media screen and (max-width: 768px) {
     .dashboard {
         flex-direction: column; /* sidebar on top, content below */

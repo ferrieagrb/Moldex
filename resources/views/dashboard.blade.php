@@ -9,9 +9,40 @@
                     @csrf
                     <button>Logout</button>
                 </form>-->
-<div class="dashboard">
-    
-    <div class="main-content">
+            
+<div class="db-content">
+    <header>
+        <p id=greetings>Hello {{ auth()->user()->name ?? 'Guest' }}, 👋</p>
+    </header>
+    <div class="columns">
+        <div class="column1">
+            <div class="row1">
+                <div class="bills">
+                    
+                </div>
+            </div>
+            <div class="row2">
+                <div class="tile">
+
+                </div>
+                <div class="tile">
+                    
+                </div>
+            </div>
+            <div class="row3">
+                <div class="tile">
+
+                </div>
+                <div class="tile">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="column2">
+            <div class="announce">
+
+            </div>
+        </div>
     </div>
 </div>
 
