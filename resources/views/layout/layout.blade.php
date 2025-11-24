@@ -44,28 +44,28 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="/documents">
                     <i class="bx bx-file"></i>
                     <span class="nav-item">Documents</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="/help">
                     <i class="bx bx-help-circle"></i>
                     <span class="nav-item">Help</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="/maintenance">
                     <i class="bx bx-briefcase"></i>
                     <span class="nav-item">Maintenance</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="/announcements">
                     <i class="bx bx-book-open"></i>
                     <span class="nav-item">Announcements</span>
                 </a>

@@ -300,6 +300,48 @@
 
 /* END */
 
+/*Finance Style*/
+
+.fn-content{
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.fn-rows{
+    margin-top: 5vh;
+}
+
+.fn-tile1{
+    box-shadow: 5px 10px #000000;
+    width: 70vw;
+    height: 22vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+}
+
+.fn-tile2{
+    box-shadow: 5px 10px #000000;
+    width: 70vw;
+    height: 22vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+    margin-top: 3vh;
+}
+
+.fn-tile3{
+    box-shadow: 5px 10px #000000;
+    width: 70vw;
+    height: 27vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+    margin-top: 3vh;
+}
+
+/* END FINANCE */
+
 @media screen and (max-width: 768px) {
     .dashboard {
         flex-direction: column; /* sidebar on top, content below */

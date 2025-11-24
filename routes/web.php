@@ -26,3 +26,22 @@ Route::post('/settings/profile-photo', [ProfileController::class, 'updatePhoto']
 Route::get('/finance', function () {
     return view('finance');
 })->middleware('auth');
+
+Route::get('/documents', function () {
+    return view('documents');
+})->middleware('auth');
+
+
+Route::get('/help', function () {
+    return view('help');
+})->middleware('auth');
+
+
+Route::get('/maintenance', function () {
+    return view('maintenance');
+})->middleware('auth');
+
+Route::get('/announcements', function () {
+    return view('announcements');
+})->middleware('auth');
+
