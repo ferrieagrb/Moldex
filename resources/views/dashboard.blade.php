@@ -21,7 +21,7 @@
                     
                 </div>
             </div>
-            <div class="row2">
+            <div class="row2"> <div class="div"></div>
                 <div class="tile">
 
                 </div>
