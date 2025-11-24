@@ -42,8 +42,8 @@
 
 .main-content {
   flex: 1; /* automatically fills remaining space */
-  padding: 50px;
-  background: rgb(212, 212, 212);
+  padding: 40px;
+  background: #f2f3f8;
 }
 
 /*.sidebar #btn {
@@ -231,17 +231,74 @@
 
 .db-content{
     padding: 10px;
+    margin-left: 30px;
 }
-
-/* END */
 
 #greetings{
     font-size: 2em;
 }
 
-.bills{
-    box-shadow: #000;
+.columns{
+    display: flex;
 }
+
+.column1{
+    margin-top: 5vh;
+}
+
+.column2{
+    margin-top: 5vh;
+    margin-left: 10vh;
+}
+
+.bills{
+    box-shadow: 5px 10px #000000;
+    width: 35vw;
+    height: 25vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+}
+
+.column1{
+    width: 35vw;
+    height: 25vh;
+}
+
+.row2{
+    display:flex;  
+}
+
+.row3{
+    display:flex;   
+}
+
+.tile{
+    box-shadow: 5px 10px #000000;
+    width: 50px;
+    height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    flex: 1;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background: rgb(255, 255, 255);
+}
+
+#rw-tile2{
+    margin-left: 40px;
+}
+
+.announce{
+    box-shadow: 5px 10px #000000;
+    width: 30vw;
+    height: 77vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+}
+
+/* END */
 
 @media screen and (max-width: 768px) {
     .dashboard {

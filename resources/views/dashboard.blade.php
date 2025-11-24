@@ -18,14 +18,14 @@
         <div class="column1">
             <div class="row1">
                 <div class="bills">
-                    <h1>hello</h1>
+                    
                 </div>
             </div>
-            <div class="row2"> <div class="div"></div>
+            <div class="row2"> 
                 <div class="tile">
-                    <h2>lollololol</h2>
+                    
                 </div>
-                <div class="tile">
+                <div class="tile" id=rw-tile2>
                     
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <div class="tile">
 
                 </div>
-                <div class="tile">
+                <div class="tile"id=rw-tile2>
                     
                 </div>
             </div>

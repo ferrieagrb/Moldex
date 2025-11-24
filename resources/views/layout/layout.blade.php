@@ -30,14 +30,14 @@
         </div>
         <ul>
             <li>
-                <a href="#">
+                <a href="/dashboard">
                     <i class="bx bx-layout"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="/finance">
                     <i class="bx bx-wallet"></i>
                     <span class="nav-item">Finances</span>
                 </a>

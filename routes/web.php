@@ -22,3 +22,7 @@ Route::get('/settings', function () {
 Route::post('/settings/profile-photo', [ProfileController::class, 'updatePhoto'])
     ->middleware('auth')
     ->name('settings.update.photo');
+
+Route::get('/finance', function () {
+    return view('finance');
+})->middleware('auth');
