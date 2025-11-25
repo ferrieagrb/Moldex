@@ -34,37 +34,37 @@
                     <i class="bx bx-layout"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
-            </li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="{{ request()->is('finance') ? 'active' : '' }}">
                 <a href="/finance">
                     <i class="bx bx-wallet"></i>
                     <span class="nav-item">Finances</span>
                 </a>
-            </li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="{{ request()->is('documents') ? 'active' : '' }}">
                 <a href="/documents">
                     <i class="bx bx-file"></i>
                     <span class="nav-item">Documents</span>
                 </a>
-            </li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="{{ request()->is('help') ? 'active' : '' }}">
                 <a href="/help">
                     <i class="bx bx-help-circle"></i>
                     <span class="nav-item">Help</span>
                 </a>
             </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="{{ request()->is('maintenance') ? 'active' : '' }}">
                 <a href="/maintenance">
                     <i class="bx bx-briefcase"></i>
                     <span class="nav-item">Maintenance</span>
                 </a>
             </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li class="{{ request()->is('announcements') ? 'active' : '' }}">
                 <a href="/announcements">
                     <i class="bx bx-book-open"></i>
                     <span class="nav-item">Announcements</span>

@@ -62,4 +62,20 @@ Route::get('/adminlogout', function () {
 
 Route::post('/adminlogout', [UserController::class,'adminlogout']);
 
+Route::get('/admincreate', function () {
+    return view('admincreate');
+})->middleware('auth');
+
+Route::get('/adminforums', function () {
+    return view('adminforums');
+})->middleware('auth');
+
+Route::get('/adminresidents', function () {
+    return view('adminresidents');
+})->middleware('auth');
+
+Route::get('/adminunits', function () {
+    return view('adminunits');
+})->middleware('auth');
+
 

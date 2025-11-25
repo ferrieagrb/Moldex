@@ -49,7 +49,7 @@
                 <button> Login </button>
             </form>
 
-            <a href="/admin/login" class="admin-login">Admin Login</a>
+            <a href="/adminlogin" class="admin-login">Admin Login</a>
             
         </div>
     </div> 

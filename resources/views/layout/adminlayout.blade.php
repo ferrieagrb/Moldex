@@ -30,35 +30,35 @@
         </div>
         <ul>
             <li>
-                <a href="/dashboard">
+                <a href="/admindash">
                     <i class="bx bx-layout"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="/finance">
+                <a href="/admincreate">
                     <i class="bx bx-wallet"></i>
                     <span class="nav-item">Create Account</span>
                 </a>
             </li>
 
             <li>
-                <a href="/documents">
+                <a href="/adminforums">
                     <i class="bx bx-file"></i>
                     <span class="nav-item">Forums</span>
                 </a>
             </li>
 
             <li>
-                <a href="/help">
+                <a href="/adminresidents">
                     <i class="bx bx-help-circle"></i>
                     <span class="nav-item">Residents</span>
                 </a>
             </li>
 
             <li>
-                <a href="/maintenance">
+                <a href="/adminunits">
                     <i class="bx bx-briefcase"></i>
                     <span class="nav-item">Units</span>
                 </a>

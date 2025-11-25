@@ -445,6 +445,14 @@
         flex-direction: column;
     }
 
+    .sidebar li.active a {
+    color: #00BCB2;  /* any color you want */
+}
+
+    .sidebar li.active a i {
+        color: #00BCB2; /* same blue color for icon */
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -460,5 +468,16 @@
     }
 }
 
+.thumb { 
+    width: 300px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.thumb:hover {
+    transform: scale(1.05);
 
+}
+.lightbox {
 
+}

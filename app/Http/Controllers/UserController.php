@@ -60,6 +60,7 @@ class UserController extends Controller
         $user = User::create($Incoming); /*add the datas in the database*/
         auth()->login($user);
         return redirect('/dashboard');
+            
     }
 
     public function adminLogin(Request $request)
