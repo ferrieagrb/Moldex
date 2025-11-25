@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -29,45 +29,38 @@
             <h2>TenantPro</h2>
         </div>
         <ul>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li>
                 <a href="/dashboard">
                     <i class="bx bx-layout"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
-            </li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li>
                 <a href="/finance">
                     <i class="bx bx-wallet"></i>
-                    <span class="nav-item">Finances</span>
+                    <span class="nav-item">Create Account</span>
                 </a>
-            </li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li>
                 <a href="/documents">
                     <i class="bx bx-file"></i>
-                    <span class="nav-item">Documents</span>
+                    <span class="nav-item">Forums</span>
                 </a>
-            </li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li>
                 <a href="/help">
                     <i class="bx bx-help-circle"></i>
-                    <span class="nav-item">Help</span>
+                    <span class="nav-item">Residents</span>
                 </a>
             </li>
 
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+            <li>
                 <a href="/maintenance">
                     <i class="bx bx-briefcase"></i>
-                    <span class="nav-item">Maintenance</span>
-                </a>
-            </li>
-
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a href="/announcements">
-                    <i class="bx bx-book-open"></i>
-                    <span class="nav-item">Announcements</span>
+                    <span class="nav-item">Units</span>
                 </a>
             </li>
         </ul>
@@ -97,7 +90,7 @@
                     <p>{{ Auth::user()->email }}</p>
                 </div>
                 <a href="{{ route('settings') }}" class="popup-settings-btn">Settings</a>
-                <form action="/logout" method="POST" id="signoutspec">
+                <form action="/adminlogout" method="POST" id="signoutspec">
                     @csrf
                     <button class="popup-logout">Sign out</button>
                 </form>

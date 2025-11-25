@@ -8,6 +8,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/register', [UserController::class, 'showRegisterForm']);
 Route::post('/register', [UserController::class /*call the UserController file*/,'register'/*Call the function inside*/]);
 Route::post('/logout', [UserController::class,'logout']);
 Route::post('/login', [UserController::class,'login']);
@@ -44,4 +45,21 @@ Route::get('/maintenance', function () {
 Route::get('/announcements', function () {
     return view('announcements');
 })->middleware('auth');
+
+Route::get('/adminlogin', function () {
+    return view('adminlogin');
+});
+
+Route::post('/adminlogin', [UserController::class,'adminLogin']);
+
+Route::get('/admindash', function () {
+    return view('admindash');
+})->middleware('auth');
+
+Route::get('/adminlogout', function () {
+    return view('adminlogin');
+});
+
+Route::post('/adminlogout', [UserController::class,'adminlogout']);
+
 

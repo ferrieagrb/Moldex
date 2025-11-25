@@ -385,15 +385,6 @@
     margin-left: 2vw;
 }
 
-.sidebar li.active a {
-    color: #00BCB2;  /* any color you want */
-}
-
-.sidebar li.active a i {
-    color: #00BCB2; /* same blue color for icon */
-}
-
-
 /* END DOCU */
 
 @media screen and (max-width: 768px) {
