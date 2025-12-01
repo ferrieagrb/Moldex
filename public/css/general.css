@@ -8,6 +8,8 @@
     font-family: 'Poppins';
 }
 
+
+
 .sidebar {
     height: 100vh;
     width: 400px;
@@ -227,6 +229,26 @@
     display: none;
 }
 
+.bills{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#amount{
+    font-size: 50px;
+    font-family: 'Poppins';
+}
+
+.image{
+    margin: 2em;
+    margin-right: 0;
+}
+
+.due-review{
+    margin: 5em;
+}
+
 /* DASHBOARD CONTENT CSS  */
 
 .db-content{
@@ -266,7 +288,8 @@
 }
 
 .row2{
-    display:flex;  
+    display:flex;
+    font-family: 'Poppins';
 }
 
 .row3{
@@ -283,6 +306,9 @@
     margin-top: 30px;
     margin-bottom: 10px;
     background: rgb(255, 255, 255);
+    display: inline-block;  /* makes them horizontal */
+    align-content: center;
+    text-align: center;
 }
 
 #rw-tile2{
@@ -318,6 +344,9 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 30px;
     background: rgb(255, 255, 255);
+    display: flex;
+    gap: 200px;
+    padding: 2em;
 }
 
 .fn-tile2{
@@ -328,6 +357,9 @@
     border-radius: 30px;
     background: rgb(255, 255, 255);
     margin-top: 3vh;
+    display: flex;
+    gap: 200px;
+    padding: 2em;
 }
 
 .fn-tile3{
@@ -347,6 +379,22 @@
 .doc-content{
     padding: 10px;
     margin-left: 30px;
+}
+
+#docu-button{
+    color:#fff;
+    background-color: #11CA00;
+    border-radius: 10px;
+    border: 0;
+    height: 5vh;
+    width: 8vw;
+    font-family: 'Poppins';
+    cursor: pointer;
+}
+
+#docu-button:hover{
+    background-color: #0b8100;
+    transition: 0.3s;
 }
 
 .docu-rows{
@@ -369,6 +417,13 @@
     border-radius: 30px;
     background: rgb(255, 255, 255);
     margin-top: 3vh;
+    display: inline-block;
+    align-content: center;
+    padding: 2vw;
+}
+
+.docu-tile1 h2{
+    margin-bottom: 5vh;
 }
 
 .docu-tile2{
@@ -379,6 +434,13 @@
     border-radius: 30px;
     background: rgb(255, 255, 255);
     margin-top: 3vh;
+    display: inline-block;
+    align-content: center;
+    padding: 2vw;
+}
+
+.docu-tile2 h2{
+    margin-bottom: 5vh;
 }
 
 #docu-tile22{
