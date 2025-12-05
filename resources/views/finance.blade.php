@@ -5,6 +5,7 @@
 @php
 use App\Models\Bill;
 
+
 // Get the latest bill for the logged-in user
 $bill = Bill::where('user_id', auth()->id())->latest()->first();
 @endphp
@@ -43,7 +44,7 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
                     @if($bill)
                         @if($bill->status === 'unpaid' && $displayAmount > 0)
                                 <button onclick="openPayModal({{ $bill->id }}, {{ $displayAmount }})">Pay</button>
-                            @endif
+                        @endif
                     @endif
                 </div>
             </div>
@@ -52,6 +53,9 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
             <div id="payModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
                 <div style="background:white; padding:20px; border-radius:8px; width:300px; text-align:center;">
                     <h3>Pay Bill</h3>
+                    @if($bill->status === 'unpaid' && $displayAmount > 0)
+                                <button onclick="openPayModal({{ $bill->id }}, {{ $displayAmount }})">Pay</button>
+                    @endif
                     <p>Amount due: $<span id="modal-bill-amount"></span></p>
                     <input type="number" id="payAmount" placeholder="Enter amount to pay" style="width:100%; margin-bottom:10px;" />
                     <button onclick="submitPayment()">Pay</button>
@@ -77,7 +81,9 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
             </div>
         </div>
         <div class="fn-row3">
-            <div class="fn-tile3"></div>
+            <div class="fn-tile3" id="payment-history-container">
+                @include('partials.payment_history', ['histories' => $histories])
+            </div>
         </div>
     </div>
 </div>
@@ -99,16 +105,17 @@ function closePayModal() {
 function submitPayment() {
     let payAmount = parseFloat(document.getElementById('payAmount').value);
 
-    if (!payAmount || payAmount <= 0) {
+    if (!payAmount || payAmount <= 0) { //Check if the value of the payAmount textbox is less than or equal to 0
         alert('Please enter a valid amount.');
         return;
     }
 
-    fetch(`/bills/${currentBillId}/pay`, {
-        method: 'POST',
+    fetch(`/bills/${currentBillId}/pay`, { //Calls the route for Mark as Paid
+        method: 'POST', //Tells the data is being sent from the webpage
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            'Content-Type': 'application/json', //Tells that the data is JSON
+        
+            'X-CSRF-TOKEN': '{{ csrf_token() }}' //
         },
         body: JSON.stringify({ amount: payAmount })
     })
@@ -118,10 +125,20 @@ function submitPayment() {
             document.getElementById(`bill-amount-${currentBillId}`).innerText = data.new_amount;
             closePayModal();
             alert('Payment successful!');
+
+            fetchPaymentHistory();
         } else {
             alert(data.message || 'Payment failed');
         }
     });
+}
+
+function fetchPaymentHistory() {
+    fetch('{{ route("payment.history.ajax") }}')
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('payment-history-container').innerHTML = html;
+        });
 }
 </script>
 

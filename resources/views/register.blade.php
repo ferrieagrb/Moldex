@@ -18,6 +18,10 @@
                 <input type="checkbox" name="is_admin" value="1">
                 Register as Admin
             </label>
+            <label>
+                <input type="checkbox" name="is_maintenance" value="1">
+                Register as Maintenance
+            </label>
             <button>Register</button>
         </form>
     </div>

@@ -38,14 +38,14 @@
                     </div>
                 @endif
                 @csrf
-                <label for="username">Username</label>
-                <input type="text" placeholder="Enter your username" name="loginname">
+                <label for="Username">Username</label>
+                <input type="text" placeholder="Enter your username" name="Username">
                 <div class="password-label">
                     <label for="password">Password</label>
                     <a href="#" class="forgot-password">Forgot password?</a>
                 </div>
                 
-                <input type="password" placeholder="Enter your password" name="loginpassword">
+                <input type="password" placeholder="Enter your password" name="Password">
                 <button> Login </button>
             </form>
 

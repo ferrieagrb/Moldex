@@ -48,9 +48,9 @@ Route::post('/settings/profile-photo', [ProfileController::class, 'updatePhoto']
     ->middleware('auth')
     ->name('settings.update.photo');
 
-Route::get('/finance', function () {
-    return view('finance');
-})->middleware('auth')->name('finance');
+Route::get('/finance', [BillingController::class, 'finance'])
+      ->middleware('auth')
+      ->name('finance');
 
 Route::get('/documents', function () {
     return view('documents');
@@ -77,6 +77,10 @@ Route::post('/adminlogin', [UserController::class,'adminLogin']);
 
 Route::get('/admindash', function () {
     return view('admindash');
+})->middleware('auth');
+
+Route::get('/maintenancedash', function () {
+    return view('maintenancedash');
 })->middleware('auth');
 
 Route::get('/adminlogout', function () {
@@ -113,7 +117,7 @@ Route::post('/admin/invoice', [BillingController::class, 'store'])->name('admin.
 // API for user dashboard bills (optional direct view)
 Route::get('/dashboard/bills', [BillingController::class, 'userBills'])->name('dashboard.bills')->middleware('auth');
 
-// Mark paid (optional)
+// Mark as Paid route in the Finance JS for the function markPaid
 Route::post('/bills/{id}/pay', [BillingController::class, 'markPaid'])->name('bills.pay')->middleware('auth');
 
 
@@ -134,3 +138,13 @@ Route::get('/check-file/{type}', [AdminDocumentController::class, 'checkFile'])
      ->middleware('auth')
      ->name('checkFile');
 
+Route::get('/payment-history', [BillingController::class, 'paymentHistory'])->name('payment.history');
+
+// For paying a bill (already exists)
+Route::post('/bills/{id}/pay', [BillingController::class, 'markPaid']);
+
+Route::get('/receipt/{id}', [BillingController::class, 'generateReceipt'])->name('receipt.generate');
+
+Route::get('/payment-history/ajax', [BillingController::class, 'paymentHistoryAjax'])
+    ->name('payment.history.ajax')
+    ->middleware('auth');

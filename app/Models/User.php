@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'profile_photo',
         'admin',
+        'maintenance',
     ];
 
     /**
@@ -47,5 +48,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function paymentHistories()
+        {
+            return $this->hasMany(PaymentHistory::class);
+        }
+
 
     }

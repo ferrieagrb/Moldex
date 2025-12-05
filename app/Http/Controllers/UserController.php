@@ -12,23 +12,23 @@ class UserController extends Controller
 
     public function login(Request $request){
         $Incoming = $request->validate([
-            'loginname' => 'required',
-            'loginpassword' => 'required'
+            'Username' => 'required',
+            'Password' => 'required'
         ]);
 
-        if (auth()->attempt(['name' => $Incoming['loginname'],'password' => $Incoming['loginpassword']])){
+        if (auth()->attempt(['name' => $Incoming['Username'],'password' => $Incoming['Password']])){
             $user = auth()->user();
             if ($user->admin == 1) {
             auth()->logout(); // log them out immediately
             return back()->withErrors([
-                'loginname' => 'Admins cannot login here.'
+                'Username' => 'Admins cannot login here.'
             ])->withInput();
             }
             $request->session()->regenerate();
             return redirect('/dashboard');
         }
         return back()->withErrors([
-        'loginpassword' => 'Incorrect username or password.'
+        'Password' => 'Incorrect username or password.'
         ])->withInput();
     }
 
@@ -56,6 +56,8 @@ class UserController extends Controller
 
         $Incoming['admin'] = $request->has('is_admin') ? 1 : 0;
 
+        $Incoming['maintenance'] = $request->has('is_maintenance') ? 1 : 0;
+
         $Incoming['password'] = bcrypt($Incoming['password']);
         $user = User::create($Incoming); /*add the datas in the database*/
         auth()->login($user);
@@ -79,6 +81,12 @@ class UserController extends Controller
         if ($user->admin == 1) {
             $request->session()->regenerate();
             return redirect('/admindash');
+
+        
+        } else if ($user->maintenance == 1) {
+            $request->session()->regenerate();
+            return redirect('/maintenance   dash');
+        
         } else {
             auth()->logout(); // Logout if not admin
             return back()->withErrors([

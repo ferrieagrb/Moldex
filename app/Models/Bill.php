@@ -40,4 +40,10 @@ class Bill extends Model
         $this->paid_at = $when ?: now();
         $this->save();
     }
+
+    public function paymentHistories()
+    {
+        return $this->hasMany(PaymentHistory::class);
+    }
+
 }
