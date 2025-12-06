@@ -18,4 +18,8 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
 
+    protected $policies = [
+        \App\Models\Ticket::class => \App\Policies\TicketPolicy::class,
+        ];
+
 }

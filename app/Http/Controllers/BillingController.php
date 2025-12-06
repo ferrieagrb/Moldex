@@ -17,7 +17,7 @@ class BillingController extends Controller
     public function create()
     {
         // load all users to bill
-        $users = User::orderBy('name')->get();
+        $users = User::where('admin', 0)->where('maintenance', 0)->get();
         return view('admin.invoice', compact('users'));
     }
 

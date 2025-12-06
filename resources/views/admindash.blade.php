@@ -57,7 +57,7 @@
     </div>
 
     {{--Add Resident--}}
-     <div class="dashboard-card">
+     <div class="dashboard-card" onclick="window.location.href='{{ route('adminresidents') }}'">
         <img src="/images/icondash1.png" class="dashboard-icon"/>
         <div class="dashboard-card-title">Add Resident</div>
     </div>

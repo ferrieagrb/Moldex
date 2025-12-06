@@ -21,7 +21,7 @@
         <i class='bx bx-menu' id="menu-btn" style="font-size: 2rem; cursor: pointer;"></i>
         <div class="top">
             <div class="logo">
-                <img src="../images/linear.png" height="35px" width="130px">
+                <img src="{{ asset('images/linear.png') }}" height="35px" width="130px">
             </div>
             
         </div>
@@ -29,35 +29,35 @@
             <h2>TenantPro</h2>
         </div>
         <ul>
-            <li>
+            <li class="{{ request()->is('admindash') ? 'active' : '' }}">
                 <a href="/admindash">
                     <i class="bx bx-layout"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('admincreate') ? 'active' : '' }}">
                 <a href="/admincreate">
                     <i class="bx bx-wallet"></i>
                     <span class="nav-item">Create Account</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('adminforums') ? 'active' : '' }}">
                 <a href="/adminforums">
                     <i class="bx bx-file"></i>
                     <span class="nav-item">Forums</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('adminresidents') ? 'active' : '' }}">
                 <a href="/adminresidents">
                     <i class="bx bx-help-circle"></i>
                     <span class="nav-item">Residents</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('adminunits') ? 'active' : '' }}">
                 <a href="/adminunits">
                     <i class="bx bx-briefcase"></i>
                     <span class="nav-item">Units</span>

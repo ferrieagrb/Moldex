@@ -46,7 +46,7 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
                 </div>
             </div>
             <div class="row2" >
-                <div class="tile" onclick="window.location.href='{{ route('help') }}'" style="cursor:pointer;">
+                <div class="tile" onclick="window.location.href='{{ route('tickets.index') }}'" style="cursor:pointer;">
                     <img src="../images/3dicons-document.png" height="100px" width="100px">
                     <p> Tickets </p>
                 </div>
@@ -56,7 +56,7 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
                 </div>
             </div>
             <div class="row3">
-                <div class="tile" onclick="window.location.href='{{ route('finance') }}'" style="cursor:pointer;">
+                <div class="tile" onclick="window.location.href='{{ route('tickets.create') }}'" style="cursor:pointer;">
                     <img src="../images/3dicons-phone.png" height="100px" width="100px">
                     <p> Submit an Admin Ticket </p>
                 </div>
@@ -67,8 +67,28 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
             </div>
         </div>
         <div class="column2">
-            <div class="announce">
-
+            <div class="posts-scroll2">
+                @foreach ($posts as $post)
+                <div class="post-item">
+                    <div class="postrow1-2">
+                            <div class="picture">
+                                @php
+                                $user = $post->user;
+                                // If profile_photo exists, use it; else fallback
+                                $profilePhoto = $user && $user->profile_photo
+                                                ? asset('profile_photos/' . $user->profile_photo)
+                                                : asset('images/default-profile.png');
+                                @endphp
+                                <img src="{{ $profilePhoto }}" alt="{{ $user->name ?? 'User' }}" class="profile-photo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                            </div>
+                            <div class="details">
+                                <h3>{{ $post->user->name }}</h3>
+                                <p>{{$post['title']}}</p>
+                                {{$post['body']}}<br>
+                            </div>
+                        </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>

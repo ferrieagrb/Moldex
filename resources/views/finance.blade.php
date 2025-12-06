@@ -53,9 +53,9 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
             <div id="payModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
                 <div style="background:white; padding:20px; border-radius:8px; width:300px; text-align:center;">
                     <h3>Pay Bill</h3>
-                    @if($bill->status === 'unpaid' && $displayAmount > 0)
-                                <button onclick="openPayModal({{ $bill->id }}, {{ $displayAmount }})">Pay</button>
-                    @endif
+                                    <!--@if($bill->status === 'unpaid' && $displayAmount > 0)
+                                                <button onclick="openPayModal({{ $bill->id }}, {{ $displayAmount }})">Pay</button>
+                                    @endif-->
                     <p>Amount due: $<span id="modal-bill-amount"></span></p>
                     <input type="number" id="payAmount" placeholder="Enter amount to pay" style="width:100%; margin-bottom:10px;" />
                     <button onclick="submitPayment()">Pay</button>

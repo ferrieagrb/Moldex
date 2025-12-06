@@ -24,6 +24,21 @@ class User extends Authenticatable
         'profile_photo',
         'admin',
         'maintenance',
+
+        // --- ADDITIONS FOR LIVE CHAT ---
+        'admin_id',       // assigned admin for a user
+        'is_available',   // admin availability
+
+        //Additional User Details
+            'first_name',
+            'middle_name',
+            'last_name',
+            'address',
+            'date_of_birth',
+            'contact_number',
+            'tel_number',
+            'nationality',
+            'room_no'
     ];
 
     /**
@@ -54,5 +69,10 @@ class User extends Authenticatable
             return $this->hasMany(PaymentHistory::class);
         }
 
+    public function userPosts(){
+        return $this->hasMany(Post::class, 'user_id');
+    }
 
     }
+
+    

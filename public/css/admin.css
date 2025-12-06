@@ -478,6 +478,37 @@
     transform: scale(1.05);
 
 }
-.lightbox {
 
+.users{
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: rgba(51, 51, 51, 0.2) 0 6px 12px;
+    height:7em;
+    width: 15em;
+    display: flex;
+    align-items: center;      
+    justify-content: center;
+    margin: 1em;
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+
+.users:hover {
+    transform: translateY(-5px);
+}
+
+.boxes{
+    display: flex;          /* enable flex layout */
+    flex-wrap: wrap;        /* allow items to wrap to next row */
+    gap: 10px;              /* optional: space between items */
+    margin-top: 2em;
+}
+
+.sidebar li.active a {
+    color: #00BCB2;  /* any color you want */
+}
+
+.sidebar li.active a i {
+    color: #00BCB2; /* same blue color for icon */
 }

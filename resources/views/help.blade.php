@@ -1,8 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-
-<h1>help</h1>
+<h1>Help / Live Chat</h1>
 
 
 @endsection

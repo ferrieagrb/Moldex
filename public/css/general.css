@@ -280,6 +280,11 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 30px;
     background: rgb(255, 255, 255);
+    transition:0.3s;
+}
+
+.bills:hover{
+    transform: translateY(-5px);
 }
 
 .column1{
@@ -297,7 +302,6 @@
 }
 
 .tile{
-    box-shadow: 5px 10px #000000;
     width: 50px;
     height: 200px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -309,6 +313,11 @@
     display: inline-block;  /* makes them horizontal */
     align-content: center;
     text-align: center;
+    transition:0.3s;
+}
+
+.tile:hover{
+    transform: translateY(-5px);
 }
 
 #rw-tile2{
@@ -532,5 +541,130 @@
     }
 }
 
+.window-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width:100%;
+}
+
+.posts-scroll {
+    max-height: 21em;             /* adjust height to fit your design */
+    overflow-y: auto;           /* vertical scroll */
+    padding: 20px;
+    border: 1px solid #e2e8f0;  /* subtle border */
+    border-radius: 10px;
+    background: #fff;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* per-post styling */
+.posts-scroll .post-item {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
 
 
+
+/* optional: nicer thin scrollbar for webkit browsers */
+.posts-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.posts-scroll::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(0,0,0,0.12);
+}
+
+.posts-scroll2 {
+    max-height: 43rem;
+    width: 40em;             /* adjust height to fit your design */
+    overflow-y: auto;           /* vertical scroll */
+    padding: 20px;
+    border: 1px solid #e2e8f0;  /* subtle border */
+    border-radius: 30px;
+    background: #fff;
+    gap: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* per-post styling */
+.posts-scroll2 .post-item {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+
+
+/* optional: nicer thin scrollbar for webkit browsers */
+.posts-scroll2::-webkit-scrollbar {
+    width: 8px;
+}
+.posts-scroll2::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(0,0,0,0.12);
+}
+
+.postrow1{
+    display: flex;
+    gap:20px
+}
+
+.postrow1-2{
+    display: flex;
+    gap:20px
+}
+
+/* CSS */
+.button-68 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 5px 13px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-68:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-68:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-68:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px
+}

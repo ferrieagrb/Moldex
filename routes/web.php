@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Bill;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FinanceController;
-use App\Http\Controllers\BillingController;
-use App\Models\Invoice;
 
 
 // --------------- Tenant Billing Routes ---------------- //
@@ -28,15 +30,15 @@ Route::post('/logout', [UserController::class,'logout']);
 Route::post('/login', [UserController::class,'login']);
 
 
-use App\Models\Bill;
+use App\Http\Controllers\BillingController;
 
 Route::get('/dashboard', function () {
 
     $latestBill = Bill::where('user_id', auth()->id())
         ->latest()
         ->first();
-
-    return view('dashboard', compact('latestBill'));
+    $posts = Post::latest()->take(10)->get();
+    return view('dashboard', compact('latestBill'), ['posts' => $posts]);
 })->middleware(['auth']);
 
 
@@ -62,11 +64,13 @@ Route::get('/help', function () {
 
 
 Route::get('/maintenance', function () {
-    return view('maintenance');
+    return view('maintenancedash');
 })->middleware('auth')->name('maintenance');
 
 Route::get('/announcements', function () {
-    return view('announcements');
+    $posts = Post::latest()->take(10)->get();
+    $ownposts = Post::where('user_id', auth()->id())->get();
+    return view('announcements',['posts' => $posts],['ownposts' => $ownposts]);
 })->middleware('auth');
 
 Route::get('/adminlogin', function () {
@@ -77,7 +81,7 @@ Route::post('/adminlogin', [UserController::class,'adminLogin']);
 
 Route::get('/admindash', function () {
     return view('admindash');
-})->middleware('auth');
+})->middleware('auth')->name('admindash');
 
 Route::get('/maintenancedash', function () {
     return view('maintenancedash');
@@ -94,12 +98,14 @@ Route::get('/admincreate', function () {
 })->middleware('auth');
 
 Route::get('/adminforums', function () {
+    $myposts = Post::where('user_id', auth()->id())->get();
     return view('adminforums');
 })->middleware('auth');
 
 Route::get('/adminresidents', function () {
-    return view('adminresidents');
-})->middleware('auth');
+    $residents = User::where('admin', 0)->where('maintenance', 0)->get();
+    return view('adminresidents',['residents' => $residents]);
+})->middleware('auth')->name('adminresidents');
 
 Route::get('/adminunits', function () {
     return view('adminunits');
@@ -122,6 +128,7 @@ Route::post('/bills/{id}/pay', [BillingController::class, 'markPaid'])->name('bi
 
 
 
+use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\AdminDocumentController;
 
 Route::get('/download/{type}', [AdminDocumentController::class, 'download'])
@@ -148,3 +155,40 @@ Route::get('/receipt/{id}', [BillingController::class, 'generateReceipt'])->name
 Route::get('/payment-history/ajax', [BillingController::class, 'paymentHistoryAjax'])
     ->name('payment.history.ajax')
     ->middleware('auth');
+
+
+
+Route::post('/create-post', [PostController::class, 'createPost']);
+
+Route::put('/update-post/{id}', [PostController::class, 'update']);
+
+Route::delete('/delete-post/{id}', [PostController::class, 'destroy']);
+
+
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\Admin\TicketController as AdminTicketController;
+
+Route::middleware(['auth'])->group(function () {
+    // user
+    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+    Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
+    Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
+    Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
+    Route::post(
+        '/tickets/{ticket}/comment',
+        [TicketController::class, 'comment']
+    )->name('tickets.comment');
+    // admin (protect with gate or is_admin middleware)
+    
+});
+
+Route::prefix('admin')->middleware(['auth', 'can:viewAny,App\\Models\\Ticket'])->group(function () {
+    Route::get('/tickets/all', [AdminTicketController::class, 'index'])->name('admin.tickets.index');
+    Route::get('/tickets/{ticket}', [AdminTicketController::class, 'show'])->name('admin.tickets.show');
+    Route::post('/tickets/{ticket}/claim', [AdminTicketController::class, 'claim'])->name('admin.tickets.claim');
+    Route::post('/tickets/{ticket}/status', [AdminTicketController::class, 'status'])->name('admin.tickets.status');
+    Route::post('/tickets/{ticket}/comment', [AdminTicketController::class, 'comment'])->name('admin.tickets.comment');
+    Route::delete('/tickets/{ticket}', [AdminTicketController::class, 'destroy'])->name('admin.tickets.destroy');
+});
+
+Route::put('/admin/update-user/{id}', [UserController::class, 'update'])->name('admin.update.user');

@@ -61,9 +61,15 @@ class UserController extends Controller
         $Incoming['password'] = bcrypt($Incoming['password']);
         $user = User::create($Incoming); /*add the datas in the database*/
         auth()->login($user);
-        return redirect('/dashboard');
-            
-    }
+
+        if ($Incoming['admin'] == 1) {
+            return redirect()->route('admindash');
+        } elseif ($Incoming['maintenance'] == 1) {
+            return redirect()->route('maintenance');
+        } else {
+            return redirect()->route('dashboard');
+        }
+        }
 
     public function adminLogin(Request $request)
 {
@@ -85,7 +91,7 @@ class UserController extends Controller
         
         } else if ($user->maintenance == 1) {
             $request->session()->regenerate();
-            return redirect('/maintenance   dash');
+            return redirect('/maintenancedash');
         
         } else {
             auth()->logout(); // Logout if not admin
@@ -100,5 +106,40 @@ class UserController extends Controller
         'loginpassword' => 'Incorrect username or password.'
     ])->withInput();
 }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
+            'date_of_birth' => 'nullable|date',
+            'contact_number' => 'nullable|string|max:50',
+            'tel_number' => 'nullable|string|max:50',
+            'address' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'name' => 'required|string|max:255', // username
+            'nationality' => 'nullable|string|max:255',
+            'room_no' => 'nullable|string|max:255',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_name' => $request->middle_name,
+            'date_of_birth' => $request->date_of_birth,
+            'contact_number' => $request->contact_number,
+            'tel_number' => $request->tel_number,
+            'address' => $request->address,
+            'email' => $request->email,
+            'name' => $request->name,
+            'nationality' => $request->nationality,
+            'room_no' => $request->room_no,
+        ]);
+
+        return redirect()->back()->with('success', 'User updated successfully!');
+    }
 
 } 

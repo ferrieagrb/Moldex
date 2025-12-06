@@ -6,13 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    @auth
-    <p>Congrats you are logged in </p>
-    <form action="/logout" method="POST">
-    @csrf
-    <button> Logout </button>
-    </form>
-    @else
+    
                                 <!--<div style="border: 3px solid black;">
                                     <h2>Register</h2>
                                     <form action="/register" method="POST">
@@ -53,6 +47,6 @@
             
         </div>  
     </div> 
-    @endauth 
+    
 </body>
 </html>
