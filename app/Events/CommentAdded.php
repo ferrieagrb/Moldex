@@ -17,7 +17,7 @@ class CommentAdded implements ShouldBroadcast
     public $comment;
     public function __construct(TicketComment $comment)
     {
-        $this->comment = $comment->load(['user', 'admin']);
+        $this->comment = $comment->load('user', 'admin');
     }
     public function broadcastOn()
     {
@@ -29,9 +29,9 @@ class CommentAdded implements ShouldBroadcast
             'comment' => [
                 'id' => $this->comment->id,
                 'message' => $this->comment->message,
-                'user' => $this->comment->user ? ['id' => $this->comment->user->id, 'name' => $this->comment->user->name] : null,
-                'admin' => $this->comment->admin ? ['id' => $this->comment->admin->id, 'name' => $this->comment->admin->name] : null,
-                'created_at' => $this->comment->created_at->toDateTimeString()
+                'created_at' => $this->comment->created_at->diffForHumans(), // human-readable
+                'user_name' => $this->comment->user?->name,
+                'admin_name' => $this->comment->admin?->name,
             ]
         ];
     }

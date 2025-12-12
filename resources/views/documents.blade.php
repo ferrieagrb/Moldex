@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+    <title>Tenant Pro Documents</title>
+@endsection
 @section('content')
 
 <div class="doc-content">

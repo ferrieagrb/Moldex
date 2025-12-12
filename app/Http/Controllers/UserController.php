@@ -142,4 +142,28 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'User updated successfully!');
     }
 
+    public function admincreate(Request $request)
+    {
+        $user = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
+            'date_of_birth' => 'nullable|date',
+            'contact_number' => 'nullable|string|max:50',
+            'tel_number' => 'nullable|string|max:50',
+            'address' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'name' => 'required|string|max:255', // username
+            'nationality' => 'nullable|string|max:255',
+            'room_no' => 'nullable|string|max:255',
+            'password' => 'nullable|string|max:255'
+        ]);
+
+        $user['password'] = bcrypt($user['password']);
+
+       $user = User::create($user);
+
+        return redirect()->back()->with('success', 'User added successfully!');
+    }
+
 } 

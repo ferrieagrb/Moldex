@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    @yield('title')
+    <title>Dashboard</title>
 
-    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -21,7 +21,7 @@
         <i class='bx bx-menu' id="menu-btn" style="font-size: 2rem; cursor: pointer;"></i>
         <div class="top">
             <div class="logo">
-                <img src="../images/linear.png" height="35px" width="130px">
+                <img src="{{ asset('images/linear.png') }}" height="35px" width="130px">
             </div>
             
         </div>
@@ -29,45 +29,45 @@
             <h2>TenantPro</h2>
         </div>
         <ul>
-            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                <a href="/dashboard">
+            <li class="{{ request()->is('admindash') ? 'active' : '' }}">
+                <a href="/admindash">
                     <i class="bx bx-layout"></i>
                     <span class="nav-item">Dashboard</span>
                 </a>
             </li>
 
-            <li class="{{ request()->is('finance') ? 'active' : '' }}">
-                <a href="/finance">
+            <li class="{{ request()->is('admincreate') ? 'active' : '' }}">
+                <a href="/admincreate">
                     <i class="bx bx-wallet"></i>
-                    <span class="nav-item">Finances</span>
+                    <span class="nav-item">Create Account</span>
                 </a>
             </li>
 
-            <li class="{{ request()->is('documents') ? 'active' : '' }}">
-                <a href="/documents">
+            <li class="{{ request()->is('adminforums') ? 'active' : '' }}">
+                <a href="/adminforums">
                     <i class="bx bx-file"></i>
+                    <span class="nav-item">Forums</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('adminresidents') ? 'active' : '' }}">
+                <a href="/adminresidents">
+                    <i class="bx bx-help-circle"></i>
+                    <span class="nav-item">Residents</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('adminunits') ? 'active' : '' }}">
+                <a href="/adminunits">
+                    <i class="bx bx-briefcase"></i>
                     <span class="nav-item">Documents</span>
                 </a>
             </li>
 
-            <li class="{{ request()->is('help') ? 'active' : '' }}">
-                <a href="/help">
-                    <i class="bx bx-help-circle"></i>
-                    <span class="nav-item">Help</span>
-                </a>
-            </li>
-
-            <li class="{{ request()->is('maintenance') ? 'active' : '' }}">
-                <a href="/maintenance">
+            <li class="{{ request()->is('admin/invoice') ? 'active' : '' }}">
+                <a href="/admin/invoice">
                     <i class="bx bx-briefcase"></i>
-                    <span class="nav-item">Maintenance</span>
-                </a>
-            </li>
-
-            <li class="{{ request()->is('announcements') ? 'active' : '' }}">
-                <a href="/announcements">
-                    <i class="bx bx-book-open"></i>
-                    <span class="nav-item">Forums</span>
+                    <span class="nav-item">Invoice</span>
                 </a>
             </li>
         </ul>
@@ -75,7 +75,6 @@
                                 @csrf
                                 <button>Logout</button>
                             </form>-->
-        <div class="spacer"></div>
         <div class="user">
             <div class="user-mini" onclick="toggleUserPopup()">
                 <img src="{{ Auth::user()->profile_photo 
@@ -98,7 +97,7 @@
                     <p>{{ Auth::user()->email }}</p>
                 </div>
                 <a href="{{ route('settings') }}" class="popup-settings-btn">Settings</a>
-                <form action="/logout" method="POST" id="signoutspec">
+                <form action="/adminlogout" method="POST" id="signoutspec">
                     @csrf
                     <button class="popup-logout">Sign out</button>
                 </form>
@@ -107,6 +106,7 @@
     </div>
     <div class="main-content">
         @yield('content')
+        @stack('scripts')
     </div>
 </div>
 

@@ -1,8 +1,12 @@
 @extends('layout.layout')
 
+@section('title')
+    <title>Forums</title>
+@endsection
+
 @section('content')
 
-<h1>Announcements</h1>
+<h1>Forums</h1>
 
 <button class="button-68" onclick="openCreateModal()" style="margin:15px auto">Add New Post</button>
 

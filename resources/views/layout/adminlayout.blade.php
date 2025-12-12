@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    @yield('title')
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -60,7 +60,14 @@
             <li class="{{ request()->is('adminunits') ? 'active' : '' }}">
                 <a href="/adminunits">
                     <i class="bx bx-briefcase"></i>
-                    <span class="nav-item">Units</span>
+                    <span class="nav-item">Documents</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('admin/invoice') ? 'active' : '' }}">
+                <a href="/admin/invoice">
+                    <i class="bx bx-briefcase"></i>
+                    <span class="nav-item">Invoice</span>
                 </a>
             </li>
         </ul>
@@ -99,6 +106,7 @@
     </div>
     <div class="main-content">
         @yield('content')
+        @stack('scripts')
     </div>
 </div>
 

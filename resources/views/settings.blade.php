@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+    <title>Tenant Pro Settings</title>
+@endsection
 @section('content')
  <img src="{{ Auth::user()->profile_photo 
             ? asset('profile_photos/' . Auth::user()->profile_photo)

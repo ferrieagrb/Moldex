@@ -64,14 +64,14 @@ Route::get('/help', function () {
 
 
 Route::get('/maintenance', function () {
-    return view('maintenancedash');
+    return view('maintenance');
 })->middleware('auth')->name('maintenance');
 
 Route::get('/announcements', function () {
     $posts = Post::latest()->take(10)->get();
     $ownposts = Post::where('user_id', auth()->id())->get();
     return view('announcements',['posts' => $posts],['ownposts' => $ownposts]);
-})->middleware('auth');
+})->middleware('auth')->name('announcements');
 
 Route::get('/adminlogin', function () {
     return view('adminlogin');
@@ -95,21 +95,19 @@ Route::post('/adminlogout', [UserController::class,'adminlogout']);
 
 Route::get('/admincreate', function () {
     return view('admincreate');
-})->middleware('auth');
+})->middleware('auth')->name('admincreate');
+
+Route::post('/admincreate', [UserController::class /*call the UserController file*/,'admincreate'/*Call the function inside*/]);
 
 Route::get('/adminforums', function () {
-    $myposts = Post::where('user_id', auth()->id())->get();
-    return view('adminforums');
+    $posts = Post::all();
+    return view('adminforums',['posts' => $posts]);
 })->middleware('auth');
 
 Route::get('/adminresidents', function () {
     $residents = User::where('admin', 0)->where('maintenance', 0)->get();
     return view('adminresidents',['residents' => $residents]);
 })->middleware('auth')->name('adminresidents');
-
-Route::get('/adminunits', function () {
-    return view('adminunits');
-})->middleware('auth');
 
 
 
@@ -137,7 +135,7 @@ Route::get('/download/{type}', [AdminDocumentController::class, 'download'])
 
 // Admin uploads documents
 Route::get('/adminunits', [AdminDocumentController::class, 'create'])
-     ->middleware('auth');
+     ->middleware('auth')->name('adminunits');
 Route::post('/adminunits', [AdminDocumentController::class, 'store'])
      ->middleware('auth');
 

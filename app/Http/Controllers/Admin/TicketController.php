@@ -46,14 +46,27 @@ class TicketController extends Controller
         );
     }
     public function comment(Request $request, Ticket $ticket)
-    {
-        // admin posting comment
-        $request->validate(['message' => 'required|string|max:5000']);
-        $comment = $ticket->comments()->create([
-            'admin_id' => auth()->id(),
-            'message' => $request->message,
-        ]);
-        broadcast(new CommentAdded($comment))->toOthers();
-        return response()->json(['success' => true, 'comment' => $comment->load('admin')]);
-    }
+{
+    $request->validate(['message' => 'required|string|max:5000']);
+
+    $comment = $ticket->comments()->create([
+        'admin_id' => auth()->id(),
+        'message' => $request->message,
+    ]);
+
+    // Load admin relationship
+    $comment->load('admin');
+
+    return response()->json([
+        'success' => true,
+        'comment' => [
+            'id' => $comment->id,
+            'message' => $comment->message,
+            'created_at' => $comment->created_at->diffForHumans(),
+            'user_name' => $comment->user?->name,   // null for admin comment
+            'admin_name' => $comment->admin->name,  // always set
+        ],
+    ]);
+}
+
 }

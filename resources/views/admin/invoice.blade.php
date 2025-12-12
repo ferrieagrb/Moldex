@@ -1,5 +1,7 @@
 @extends('layout.adminlayout')
-
+@section('title')
+    <title>Invoice</title>
+@endsection
 @section('content')
 <div class="container" style="max-width:800px; margin:20px auto;">
     <h2>Issue Invoice</h2>

@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+    <title>Tenant Pro Finances</title>
+@endsection
 @section('content')
 
 @php
@@ -42,9 +44,7 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
                 <div class="pay">
                     <p>Payment</p>
                     @if($bill)
-                        @if($bill->status === 'unpaid' && $displayAmount > 0)
                                 <button onclick="openPayModal({{ $bill->id }}, {{ $displayAmount }})">Pay</button>
-                        @endif
                     @endif
                 </div>
             </div>

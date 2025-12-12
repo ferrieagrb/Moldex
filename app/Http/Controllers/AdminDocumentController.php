@@ -79,4 +79,5 @@ public function checkFile($type)
     return response()->json(['exists' => true]);
 }
 
+
 }

@@ -1,5 +1,9 @@
 @extends('layout.layout')
 
+@section('title')
+    <title>Dashboard</title>
+@endsection
+
 @section('content')
 
                 <!--<h1>Welcome, {{ Auth::user()->name }}!</h1>
@@ -31,16 +35,18 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
                     </div>
                     <div class="due-review">    
                         @if($bill)
-                            @php
-                                $displayAmount = ($bill->status === 'paid') ? 0 : $bill->amount;
-                            @endphp
-                            <div class="fn-tile">
-                                <p id=amount><strong>$<span id="bill-amount-{{ $bill->id }}">{{ $displayAmount }}</span></strong></p>
-                                <p><strong>Due:</strong> {{ \Carbon\Carbon::parse($bill->due_date)->format('F d, Y') }}</p>
-                                <p><strong>Status:</strong> {{ $bill->status }}</p>
-                            </div>
+                            @if($bill->status === 'unpaid')
+                                <div class="fn-tile">
+                                    <p id="amount"><strong>$<span id="bill-amount-{{ $bill->id }}">{{ $bill->amount }}</span></strong></p>
+
+                                    <p><strong>Due:</strong> {{ \Carbon\Carbon::parse($bill->due_date)->format('F d, Y') }}</p>
+                                    <p><strong>Status:</strong> {{ ucfirst($bill->status) }}</p>
+                                </div>
+                            @else
+                                <p>No bills for now</p>
+                            @endif
                         @else
-                            <p>Amount: 0 pesos</p>
+                            <p>No bills for now</p>
                         @endif
                     </div>
                 </div>
@@ -60,14 +66,14 @@ $bill = Bill::where('user_id', auth()->id())->latest()->first();
                     <img src="../images/3dicons-phone.png" height="100px" width="100px">
                     <p> Submit an Admin Ticket </p>
                 </div>
-                <div class="tile"id=rw-tile2 onclick="window.location.href='{{ route('documents') }}'" style="cursor:pointer;">
+                <div class="tile"id=rw-tile2 onclick="window.location.href='{{ route('maintenance') }}'" style="cursor:pointer;">
                     <img src="../images/3dicons-tools.png" height="100px" width="100px">
                     <p> Submit Repair Ticket </p>
                 </div>
             </div>
         </div>
         <div class="column2">
-            <div class="posts-scroll2">
+            <div class="posts-scroll2" onclick="window.location.href='{{ route('announcements') }}'">
                 @foreach ($posts as $post)
                 <div class="post-item">
                     <div class="postrow1-2">

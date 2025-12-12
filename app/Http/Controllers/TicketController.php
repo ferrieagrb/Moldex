@@ -64,14 +64,32 @@ class TicketController extends Controller
         return view('tickets.show', compact('ticket'));
     }
     public function comment(Request $request, Ticket $ticket)
-    {
-        $this->authorize('view', $ticket);
-        $request->validate(['message' => 'required|string|max:5000']);
-        $comment = $ticket->comments()->create([
-            'user_id' => auth()->id(),
-            'message' => $request->message,
-        ]);
-        broadcast(new CommentAdded($comment))->toOthers();
-        return response()->json(['success' => true, 'comment' => $comment - 0 > load('user')]);
-    }
+{
+    $this->authorize('view', $ticket);
+
+    $request->validate([
+        'message' => 'required|string|max:5000',
+    ]);
+
+    // Create comment
+    $comment = $ticket->comments()->create([
+        'user_id' => auth()->id(),
+        'message' => $request->message,
+    ]);
+
+    // Load user relationship
+    $comment->load('user');
+
+    // Return proper JSON
+    return response()->json([
+        'success' => true,
+        'comment' => [
+            'id' => $comment->id,
+            'message' => $comment->message,
+            'user_name' => $comment->user->name,
+            'created_at' => $comment->created_at->diffForHumans(),
+        ]
+    ]);
+}
+
 }

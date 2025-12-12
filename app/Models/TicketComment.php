@@ -17,6 +17,12 @@ class TicketComment extends Model
     }
     public function admin()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'admin_id');
     }
+
+    public function comments()
+{
+    return $this->hasMany(TicketComment::class);
+}
+
 }

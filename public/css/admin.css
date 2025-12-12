@@ -512,3 +512,307 @@
 .sidebar li.active a i {
     color: #00BCB2; /* same blue color for icon */
 }
+
+.posts-scroll {
+    max-height: 45em;             /* adjust height to fit your design */
+    overflow-y: auto;           /* vertical scroll */
+    padding: 20px;
+    border: 1px solid #e2e8f0;  /* subtle border */
+    border-radius: 10px;
+    background: #fff;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* per-post styling */
+.posts-scroll .post-item {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+
+
+/* optional: nicer thin scrollbar for webkit browsers */
+.posts-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.posts-scroll::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(0,0,0,0.12);
+}
+
+.button-68 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 5px 13px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-68:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-68:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-68:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+    margin: 20px auto;
+}
+
+
+/* ADMIN TICKETS*/
+
+/* Container */
+.ticket-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.ticket-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.ticket-meta {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Claim & Status forms */
+.ticket-actions form {
+    margin-bottom: 8px;
+}
+
+.ticket-actions button, 
+.ticket-actions select {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.ticket-actions select {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Ticket message */
+.ticket-message {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #ddd;
+    white-space: pre-wrap;
+}
+
+/* Attachments */
+.ticket-attachments ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ticket-attachments li {
+    margin-bottom: 4px;
+}
+
+.ticket-attachments a {
+    text-decoration: underline;
+    color: #007BFF;
+    font-size: 14px;
+}
+
+/* Comments */
+.comments {
+    margin-top: 24px;
+}
+
+.comments-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.comments-list {
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.comment {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.comment.admin {
+    background-color: #e0f7fa;
+}
+
+.comment-meta {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+/* Admin Comment Form */
+.admin-comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.admin-comment-form button {
+    margin-top: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+/* END ADMIN TICKETS */
+
+/* admin index*/
+.admin-tickets-container {
+    padding: 24px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.alert-success {
+    padding: 12px;
+    background-color: #d1fae5;
+    color: #065f46;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tickets-table th,
+.tickets-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tickets-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+
+.tickets-table tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+.ticket-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: #111827;
+}
+
+.ticket-link:hover {
+    text-decoration: underline;
+}
+
+.high-priority {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    gap: 4px;
+}
+
+.inline-form {
+    display: inline-block;
+    margin: 0;
+}
+
+.btn-action {
+    padding: 4px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    text-decoration: none;
+    color: #111827;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-action:hover {
+    background-color: #f3f4f6;
+}
+
+.pagination {
+    margin-top: 16px;
+}
+
+/* End admin index */

@@ -1,7 +1,8 @@
 @extends('layout.adminlayout')
-
+@section('title')
+    <title>Tenant Pro | Admin Dashboard</title>
+@endsection
 @section('content')
-
 <header>
         <p id=greetings>Hello Admin {{ auth()->user()->name ?? 'Guest' }}, 👋</p>
     </header>
@@ -51,35 +52,36 @@
 <div class="dashboard-container">
         
      {{--Current Active Residents--}}
-     <div class="dashboard-card">
+     <div class="dashboard-card" onclick="window.location.href='{{ route('adminresidents') }}'">
         <img src="/images/icondash1.png" class="dashboard-icon"/>
         <div class="dashboard-card-title">Currently Active Resident</div>
     </div>
 
     {{--Add Resident--}}
-     <div class="dashboard-card" onclick="window.location.href='{{ route('adminresidents') }}'">
+     <div class="dashboard-card" onclick="window.location.href='{{ route('admincreate') }}'">
         <img src="/images/icondash1.png" class="dashboard-icon"/>
         <div class="dashboard-card-title">Add Resident</div>
     </div>
 
      {{--Check Units--}}
-     <div class="dashboard-card">
+     <div class="dashboard-card" onclick="window.location.href='{{ route('adminunits') }}'">
         <img src="/images/icondash2.png" class="dashboard-icon"/>
-        <div class="dashboard-card-title">Check Units</div>
+        <div class="dashboard-card-title">Add Documents</div>
     </div>
    
     {{--Facility Reservations Tickets--}}
-     <div class="dashboard-card">
+     <div class="dashboard-card" onclick="window.location.href='{{ route('admin.invoice.create') }}'">
         <img src="/images/icondash3.png" class="dashboard-icon"/>
-        <div class="dashboard-card-title">Facility Reservations Ticket</div>
+        <div class="dashboard-card-title">Invoice</div>
     </div>
     
     {{--Request--}}
-     <div class="dashboard-card">
+     <div class="dashboard-card" onclick="window.location.href='{{ route('admin.tickets.index') }}'">
        <img src="/images/icondash3.png" class="dashboard-icon"/>
         <div class="dashboard-card-title">Request</div>
     </div>
 
 
 </div>
+
 @endsection

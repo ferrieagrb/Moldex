@@ -1,5 +1,7 @@
 @extends('layout.adminlayout')
-
+@section('title')
+    <title>Tenant Pro | Admin Units</title>
+@endsection
 @section('content')
 
 <header>
